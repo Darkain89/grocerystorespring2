@@ -23,7 +23,7 @@ public class Customer {
     @RequestMapping(value={"/customer"})
     public String showCustomer(ModelMap view) {
         view.addAttribute("projectName", "Grocery Store");
-        org.pcedu.grocerystorespring2.entities.Customer customer = customerService.findById(1);
+        org.pcedu.grocerystorespring2.entities.Customer customer = customerService.findById(10);
         view.addAttribute("customer", customer);
         return("customer");
     }

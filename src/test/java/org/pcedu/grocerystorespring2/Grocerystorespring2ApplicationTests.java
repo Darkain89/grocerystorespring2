@@ -3,10 +3,10 @@ package org.pcedu.grocerystorespring2;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class Grocerystorespring2ApplicationTests {
 
-	@Test
+//	@Test
 	void contextLoads() {
 	}
 

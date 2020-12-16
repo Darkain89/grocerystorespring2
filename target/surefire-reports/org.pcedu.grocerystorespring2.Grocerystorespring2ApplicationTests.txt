@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.pcedu.grocerystorespring2.Grocerystorespring2ApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.841 s - in org.pcedu.grocerystorespring2.Grocerystorespring2ApplicationTests

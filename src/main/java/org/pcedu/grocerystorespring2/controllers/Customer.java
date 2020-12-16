@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value={"/customer"})
 public class Customer {
     
+    @RequestMapping(value={"/customer"})
     public String showCustomer(ModelMap view) {
         view.addAttribute("projectName", "Grocery Store");
         return("customer");

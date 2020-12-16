@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Customer - ${projectName}</h1>
+        <p>${customer}</p>
     </body>
 </html>

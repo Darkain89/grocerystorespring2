@@ -156,7 +156,17 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "org.pcedu.grocerystorespring2.entities.Customer[ id=" + id + " ]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Customer{id=").append(id);
+        sb.append(", firstName=").append(firstName);
+        sb.append(", lastName=").append(lastName);
+        sb.append(", tel=").append(tel);
+        sb.append(", email=").append(email);
+        sb.append(", ordersList=").append(ordersList);
+        sb.append('}');
+        return sb.toString();
     }
+
+   
     
 }

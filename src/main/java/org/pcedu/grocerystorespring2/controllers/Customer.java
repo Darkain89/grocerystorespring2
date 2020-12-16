@@ -5,6 +5,7 @@
  */
 package org.pcedu.grocerystorespring2.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value={"/customer"})
 public class Customer {
+    @Autowired
+    org.pcedu.grocerystorespring2.services.Customer customerService;
     
     @RequestMapping(value={"/customer"})
     public String showCustomer(ModelMap view) {
         view.addAttribute("projectName", "Grocery Store");
+        org.pcedu.grocerystorespring2.entities.Customer customer = customerService.findById(1);
+        view.addAttribute("customer", customer);
         return("customer");
     }
 }

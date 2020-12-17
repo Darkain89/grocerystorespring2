@@ -5,12 +5,13 @@
  */
 package org.pcedu.grocerystorespring2.controllers;
 
-import com.sun.tools.javac.util.Convert;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
@@ -26,8 +27,31 @@ public class Customer {
     @RequestMapping(value = {"/{id}"})
     public String showCustomer(ModelMap view, @PathVariable String id) {
         view.addAttribute("projectName", "Grocery Store");
-        org.pcedu.grocerystorespring2.entities.Customer customer = customerService.findById(Convert.string2int(id, 10));
+        org.pcedu.grocerystorespring2.entities.Customer customer = customerService.findById(Integer.parseInt(id));
         view.addAttribute("customer", customer);
         return ("customer");
+    }
+    
+    @RequestMapping("/all")
+    public String showCustomers(ModelMap view) {
+        view.addAttribute("projectName", "Grocery Store");
+        List<org.pcedu.grocerystorespring2.entities.Customer> customers;
+        customers = customerService.findAll();
+        view.addAttribute("customer", customers);
+        return("customer");
+    }
+    
+    @RequestMapping("/new")
+    public String newCustomer(ModelMap view) {
+        view.addAttribute("projectName", "Grocery Store");
+        org.pcedu.grocerystorespring2.entities.Customer customer = new org.pcedu.grocerystorespring2.entities.Customer();
+        view.addAttribute("customer", customer);
+        return("newcustomer");
+    }
+    
+    @RequestMapping(value="/new",method = RequestMethod.POST)
+    public String saveNewCustomer(ModelMap view, org.pcedu.grocerystorespring2.entities.Customer customer) {
+        customerService.save(customer);
+        return("newcustomer");
     }
 }

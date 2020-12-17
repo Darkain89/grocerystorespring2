@@ -5,7 +5,7 @@
  */
 package org.pcedu.grocerystorespring2.controllers;
 
-import com.sun.tools.javac.util.Convert;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -29,7 +29,7 @@ public class Product {
     @RequestMapping("/{id}")
     public String page(ModelMap view, @PathVariable String id) {
         view.addAttribute("projectName", "Grocery Store");
-        org.pcedu.grocerystorespring2.entities.Product product = productService.findById(Convert.string2int(id, 10));
+        org.pcedu.grocerystorespring2.entities.Product product = productService.findById(Integer.parseInt(id));
         view.addAttribute("product", product);
         return "product";
     }

@@ -142,7 +142,7 @@ public class Product implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", price=").append(price);
         sb.append(", quantity=").append(quantity);
-        sb.append(", ordersDetailsList=").append(ordersDetailsList);
+//        sb.append(", ordersDetailsList=").append(ordersDetailsList);
         sb.append('}');
         return sb.toString();
     }

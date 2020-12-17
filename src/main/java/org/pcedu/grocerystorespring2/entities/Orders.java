@@ -143,7 +143,7 @@ public class Orders implements Serializable {
         sb.append(", date=").append(date);
         sb.append(", totalPrice=").append(totalPrice);
 //        sb.append(", customersId=").append(customersId);
-        sb.append(", ordersDetailsList=").append(ordersDetailsList);
+//        sb.append(", ordersDetailsList=").append(ordersDetailsList);
         sb.append('}');
         return sb.toString();
     }

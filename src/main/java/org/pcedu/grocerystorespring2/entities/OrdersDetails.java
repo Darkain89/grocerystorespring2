@@ -138,7 +138,7 @@ public class OrdersDetails implements Serializable {
         sb.append(", price=").append(price);
         sb.append(", quantity=").append(quantity);
 //        sb.append(", orders2Id=").append(orders2Id);
-        sb.append(", productsId=").append(productsId);
+//        sb.append(", productsId=").append(productsId);
         sb.append('}');
         return sb.toString();
     }

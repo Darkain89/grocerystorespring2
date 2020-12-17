@@ -6,9 +6,11 @@
 package org.pcedu.grocerystorespring2.controllers;
 
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -50,8 +52,16 @@ public class Customer {
     }
     
     @RequestMapping(value="/new",method = RequestMethod.POST)
-    public String saveNewCustomer(ModelMap view, org.pcedu.grocerystorespring2.entities.Customer customer) {
-        customerService.save(customer);
+    public String saveNewCustomer(ModelMap view, 
+                          @Valid org.pcedu.grocerystorespring2.entities.Customer customer,
+                          BindingResult bindingResult) {
+        view.addAttribute("projectName", "Grocery Store");
+        if(bindingResult.hasErrors()) {
+           view.addAttribute("error", "There are errors on the form!");
+        } else {
+            customerService.save(customer);
+        }
+        
         return("newcustomer");
     }
 }

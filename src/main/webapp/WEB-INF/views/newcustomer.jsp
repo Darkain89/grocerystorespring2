@@ -17,13 +17,14 @@
     </head>
     <body>
         <h1 class="error">Customer - ${projectName}</h1>
-        <button onclick="myAlert()">MyButton</button>
+        <!--<button onclick="myAlert()">MyButton</button>-->
         <f:form method="POST" action="new" modelAttribute="customer">
-            First Name:<f:input path="firstName" /><br>
+            First Name:<f:input path="firstName" /><f:errors path="firstName" cssClass="error"></f:errors><br>
             Last Name:<f:input path="lastName" /><br>
-            Email:<f:input path="email" /> <f:errors cssClass="error">sdfsfsdf</f:errors><br>
+            Email:<f:input path="email" type="email"/> <f:errors path="email" cssClass="error"></f:errors><br>
             Tel:<f:input path="tel" /><br>
             <f:button name="btnNewCustomer">Insert New Customer</f:button>
+            <div class="error">${error}</div>
         </f:form>
     </body>
 </html>

@@ -21,6 +21,7 @@
             <input name="${password}" type="password" />
             <button type="submit">Login</button>
         </form>
+        <div id="msg">${msg}</div>
     </body>
 </html>
 

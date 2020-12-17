@@ -12,13 +12,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
           <title>Customer Page</title>
+          <link rel="stylesheet" href="/css/style.css" />
+          <script src="/js/script.js"></script>
     </head>
     <body>
-        <h1>Customer - ${projectName}</h1>
+        <h1 class="error">Customer - ${projectName}</h1>
+        <button onclick="myAlert()">MyButton</button>
         <f:form method="POST" action="new" modelAttribute="customer">
             First Name:<f:input path="firstName" /><br>
             Last Name:<f:input path="lastName" /><br>
-            Email:<f:input path="email" /><br>
+            Email:<f:input path="email" /> <f:errors cssClass="error">sdfsfsdf</f:errors><br>
             Tel:<f:input path="tel" /><br>
             <f:button name="btnNewCustomer">Insert New Customer</f:button>
         </f:form>

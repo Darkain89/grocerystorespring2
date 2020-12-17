@@ -133,7 +133,14 @@ public class OrdersDetails implements Serializable {
 
     @Override
     public String toString() {
-        return "org.pcedu.grocerystorespring2.entities.OrdersDetails[ id=" + id + " ]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("OrdersDetails{id=").append(id);
+        sb.append(", price=").append(price);
+        sb.append(", quantity=").append(quantity);
+//        sb.append(", orders2Id=").append(orders2Id);
+//        sb.append(", productsId=").append(productsId);
+        sb.append('}');
+        return sb.toString();
     }
-    
+
 }

@@ -44,4 +44,13 @@ public class CustomerDao extends AbstractDao<Integer, Customer> {
             return(save(tempCustomer));
         } else return(false);
     }
+    
+    public boolean delete(int id) {
+        Customer tempCustomer = findById(id);
+        if(tempCustomer != null) {
+            delete(tempCustomer);
+            return(true);
+        }
+        return(false);
+    }
 }

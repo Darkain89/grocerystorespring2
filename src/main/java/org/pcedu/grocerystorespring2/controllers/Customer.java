@@ -74,11 +74,21 @@ public class Customer {
         return("updatecustomer");
     }
     
-    @RequestMapping(value="/update/saveupdate", method=RequestMethod.POST)
+    @PostMapping("/update/saveupdate")
     public String saveUpdateCustomer(ModelMap view, 
             org.pcedu.grocerystorespring2.entities.Customer customer) {
         view.addAttribute("projectName", "Grocery Store");
         customerService.update(customer);
+        return("redirect:/login");
+    }
+    
+    @GetMapping("/delete/{id}")
+    public String deleteCustomer(ModelMap view, @PathVariable int id) {
+        if(customerService.delete(id)) {
+            view.addAttribute("msg", "Customer with id:" + id + "delete successfuly!");
+            return("redirect:/login");
+        }
+        view.addAttribute("msg", "Customer with id:" + id + "was not deleted!!!");
         return("redirect:/login");
     }
 }

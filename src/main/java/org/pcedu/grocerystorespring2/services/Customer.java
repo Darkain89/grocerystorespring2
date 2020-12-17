@@ -38,4 +38,9 @@ public class Customer {
     public boolean update(org.pcedu.grocerystorespring2.entities.Customer customer) {
         return(dao.update(customer));
     }
+    
+    public boolean delete(int id) {
+        return(dao.delete(id));
+        
+    }
 }

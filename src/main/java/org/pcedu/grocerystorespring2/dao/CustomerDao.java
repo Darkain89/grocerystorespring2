@@ -33,4 +33,15 @@ public class CustomerDao extends AbstractDao<Integer, Customer> {
     public boolean save(Customer customer) {
         return(persist(customer));
     }
+    
+    public boolean update(Customer customer) {
+        Customer tempCustomer = findById(customer.getId());
+        if(tempCustomer != null) {
+            tempCustomer.setFirstName(customer.getFirstName());
+            tempCustomer.setLastName(customer.getLastName());
+            tempCustomer.setEmail(customer.getEmail());
+            tempCustomer.setTel(customer.getTel());
+            return(save(tempCustomer));
+        } else return(false);
+    }
 }

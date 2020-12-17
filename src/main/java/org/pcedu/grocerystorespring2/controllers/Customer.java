@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -63,5 +65,20 @@ public class Customer {
         }
         
         return("newcustomer");
+    }
+    
+    @GetMapping("/update/{id}")
+    public String updateCustomer(ModelMap view, @PathVariable int id) {
+        org.pcedu.grocerystorespring2.entities.Customer customer = customerService.findById(id);
+        view.addAttribute("customer", customer);
+        return("updatecustomer");
+    }
+    
+    @RequestMapping(value="/update/saveupdate", method=RequestMethod.POST)
+    public String saveUpdateCustomer(ModelMap view, 
+            org.pcedu.grocerystorespring2.entities.Customer customer) {
+        view.addAttribute("projectName", "Grocery Store");
+        customerService.update(customer);
+        return("redirect:/login");
     }
 }

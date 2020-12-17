@@ -34,4 +34,8 @@ public class Customer {
         result = dao.save(customer);
         return(result);
     }
+    
+    public boolean update(org.pcedu.grocerystorespring2.entities.Customer customer) {
+        return(dao.update(customer));
+    }
 }

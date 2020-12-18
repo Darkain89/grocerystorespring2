@@ -1,5 +1,5 @@
 org\pcedu\grocerystorespring2\Grocerystorespring2Application.class
 org\pcedu\grocerystorespring2\ServletInitializer.class
 org\pcedu\grocerystorespring2\configuration\AppConfig.class
-.netbeans_automatic_build
+org\pcedu\grocerystorespring2\configuration\WebSecurityConfig.class
 org\pcedu\grocerystorespring2\controllers\Login.class

@@ -27,7 +27,8 @@ public class CustomerDao extends AbstractDao<Integer, Customer> {
     
     public List<Customer> findAll() {
          Criteria criteria = createEntityCriteria();
-         return((List<Customer>)criteria.list());
+         //return((List<Customer>)criteria.list());
+         return(criteria.list());
                  
     }
     

@@ -1,3 +1,0 @@
-function myAlert() {
-    alert("Alert!!!");
-}

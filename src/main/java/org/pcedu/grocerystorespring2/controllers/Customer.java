@@ -85,10 +85,20 @@ public class Customer {
     @GetMapping("/delete/{id}")
     public String deleteCustomer(ModelMap view, @PathVariable int id) {
         if(customerService.delete(id)) {
-            view.addAttribute("msg", "Customer with id:" + id + "delete successfuly!");
+            view.addAttribute("msg", "Customer with id:" + id + "deleted successfuly!");
             return("redirect:/login");
         }
         view.addAttribute("msg", "Customer with id:" + id + "was not deleted!!!");
         return("redirect:/login");
+    }
+    
+    @GetMapping("/findbynames")
+    public String findByFirstLastNames(ModelMap view, String firstName, String lastName) {
+        List<org.pcedu.grocerystorespring2.entities.Customer> customers;
+        
+        
+        // https://www.tutorialspoint.com/hibernate/hibernate_criteria_queries.htm
+//        view.addAttribute("customers", customers);
+        return("customer");
     }
 }

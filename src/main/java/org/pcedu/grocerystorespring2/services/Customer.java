@@ -43,4 +43,8 @@ public class Customer {
         return(dao.delete(id));
         
     }
+    
+    public List<org.pcedu.grocerystorespring2.entities.Customer> findByFirstLastNames(String firstName, String lastName) {
+        return(dao.findByFirstLastNames(firstName, lastName));
+    }
 }

@@ -92,13 +92,12 @@ public class Customer {
         return("redirect:/login");
     }
     
-    @GetMapping("/findbynames")
-    public String findByFirstLastNames(ModelMap view, String firstName, String lastName) {
-        List<org.pcedu.grocerystorespring2.entities.Customer> customers;
-        
-        
+    @GetMapping("/findbynames/{firstName}/{lastName}")
+    public String findByFirstLastNames(ModelMap view, @PathVariable String firstName, @PathVariable String lastName) {
+        List<org.pcedu.grocerystorespring2.entities.Customer> customers = 
+                customerService.findByFirstLastNames(firstName, lastName);
         // https://www.tutorialspoint.com/hibernate/hibernate_criteria_queries.htm
-//        view.addAttribute("customers", customers);
+        view.addAttribute("customer", customers);
         return("customer");
     }
 }

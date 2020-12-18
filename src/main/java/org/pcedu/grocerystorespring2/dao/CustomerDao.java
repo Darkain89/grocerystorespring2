@@ -7,6 +7,7 @@ package org.pcedu.grocerystorespring2.dao;
 
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.pcedu.grocerystorespring2.entities.Customer;
 import org.springframework.stereotype.Repository;
 
@@ -52,5 +53,12 @@ public class CustomerDao extends AbstractDao<Integer, Customer> {
             return(true);
         }
         return(false);
+    }
+    
+    public List<Customer> findByFirstLastNames(String firstName, String lastName) {
+        Criteria criteria = createEntityCriteria();
+        criteria.add(Restrictions.eq("firstName", firstName));
+        criteria.add(Restrictions.eq("lastName", lastName));
+        return(criteria.list());
     }
 }

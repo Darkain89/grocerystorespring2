@@ -8,7 +8,9 @@ package org.pcedu.grocerystorespring2.dao;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.pcedu.grocerystorespring2.entities.Customer;
 import org.pcedu.grocerystorespring2.entities.Orders;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,6 +19,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("ordersDao")
 public class OrdersDao extends AbstractDao<Integer, Orders> {
+
+    @Autowired
+    org.pcedu.grocerystorespring2.services.Customer customerService;
 
     public Orders findById(int id) {
         Orders s = getByKey(id);
@@ -59,9 +64,12 @@ public class OrdersDao extends AbstractDao<Integer, Orders> {
         return (false);
     }
 
-    public List<Orders> findByCustomerId(Integer customersId) {
+    public List<Orders> findByCustomerId(String customersId) {
+        Customer customer = customerService.findById(Integer.parseInt(customersId));
+        System.out.println("Customer: " + customer);
         Criteria criteria = createEntityCriteria();
-        criteria.add(Restrictions.eq("customersId", customersId));
+
+        criteria.add(Restrictions.eq("customersId", customer));
         return (criteria.list());
     }
 }

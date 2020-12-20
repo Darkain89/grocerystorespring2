@@ -45,7 +45,7 @@ public class OrderService {
 
     }
 
-    public List<org.pcedu.grocerystorespring2.entities.Orders> findByCustomerId(Integer customersId) {
+    public List<org.pcedu.grocerystorespring2.entities.Orders> findByCustomerId(String customersId) {
         return (dao.findByCustomerId(customersId));
     }
 

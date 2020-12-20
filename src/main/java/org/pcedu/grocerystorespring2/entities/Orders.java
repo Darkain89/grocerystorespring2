@@ -142,12 +142,12 @@ public class Orders implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\nOrders{id=").append(id);
+        sb.append("<br>Orders{id=").append(id);
         sb.append(", date=").append(date);
         sb.append(", totalPrice=").append(totalPrice);
 //        sb.append(", customersId=").append(customersId);
         sb.append(", ordersDetailsList=").append(ordersDetailsList);
-        sb.append('}');
+        sb.append("}<br>");
         return sb.toString();
     }
 

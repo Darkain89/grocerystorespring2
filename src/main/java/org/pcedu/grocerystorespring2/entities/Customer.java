@@ -159,13 +159,13 @@ public class Customer implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\nCustomer{id=").append(id);
+        sb.append("<br>Customer{id=").append(id);
         sb.append(", firstName=").append(firstName);
         sb.append(", lastName=").append(lastName);
         sb.append(", tel=").append(tel);
         sb.append(", email=").append(email);
         sb.append(", ordersList=").append(ordersList);
-        sb.append("}\n");
+        sb.append("}<br>");
         return sb.toString();
     }
 

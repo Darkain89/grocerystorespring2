@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,6 +20,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -52,10 +53,12 @@ public class OrdersDetails implements Serializable {
     @Column(name = "quantity", nullable = false)
     private int quantity;
     @JoinColumn(name = "orders2_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false) //, fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Orders orders2Id;
     @JoinColumn(name = "products_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false) //, fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Product productsId;
 
     public OrdersDetails() {
@@ -134,11 +137,11 @@ public class OrdersDetails implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("OrdersDetails{id=").append(id);
+        sb.append("\nOrdersDetails{id=").append(id);
         sb.append(", price=").append(price);
         sb.append(", quantity=").append(quantity);
 //        sb.append(", orders2Id=").append(orders2Id);
-//        sb.append(", productsId=").append(productsId);
+        sb.append(", productsId=").append(productsId);
         sb.append('}');
         return sb.toString();
     }

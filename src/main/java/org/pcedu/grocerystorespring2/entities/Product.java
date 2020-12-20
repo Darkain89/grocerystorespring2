@@ -12,7 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,6 +23,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -58,7 +59,8 @@ public class Product implements Serializable {
     @NotNull
     @Column(name = "quantity", nullable = false)
     private int quantity;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productsId", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productsId") //, fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrdersDetails> ordersDetailsList;
 
     public Product() {
@@ -138,7 +140,7 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Product{id=").append(id);
+        sb.append("\nProduct{id=").append(id);
         sb.append(", name=").append(name);
         sb.append(", price=").append(price);
         sb.append(", quantity=").append(quantity);

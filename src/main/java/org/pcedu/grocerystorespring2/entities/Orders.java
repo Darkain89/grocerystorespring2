@@ -13,7 +13,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,6 +27,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -58,9 +59,11 @@ public class Orders implements Serializable {
     @Column(name = "total_price", precision = 10, scale = 3)
     private BigDecimal totalPrice;
     @JoinColumn(name = "customers_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false) //, fetch = FetchType.LAZY)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private Customer customersId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders2Id", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders2Id") //, fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<OrdersDetails> ordersDetailsList;
 
     public Orders() {
@@ -139,11 +142,11 @@ public class Orders implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Orders{id=").append(id);
+        sb.append("\nOrders{id=").append(id);
         sb.append(", date=").append(date);
         sb.append(", totalPrice=").append(totalPrice);
 //        sb.append(", customersId=").append(customersId);
-//        sb.append(", ordersDetailsList=").append(ordersDetailsList);
+        sb.append(", ordersDetailsList=").append(ordersDetailsList);
         sb.append('}');
         return sb.toString();
     }

@@ -6,8 +6,10 @@
 /Users/mac/Documents/GitHub/grocerystorespring2/src/main/java/org/pcedu/grocerystorespring2/services/OrderService.java
 /Users/mac/Documents/GitHub/grocerystorespring2/src/main/java/org/pcedu/grocerystorespring2/entities/Customer.java
 /Users/mac/Documents/GitHub/grocerystorespring2/src/main/java/org/pcedu/grocerystorespring2/entities/Product.java
+/Users/mac/Documents/GitHub/grocerystorespring2/src/main/java/org/pcedu/grocerystorespring2/controllers/CustomerRestController.java
 /Users/mac/Documents/GitHub/grocerystorespring2/src/main/java/org/pcedu/grocerystorespring2/entities/OrdersDetails.java
 /Users/mac/Documents/GitHub/grocerystorespring2/src/main/java/org/pcedu/grocerystorespring2/dao/AbstractDao.java
+/Users/mac/Documents/GitHub/grocerystorespring2/src/main/java/org/pcedu/grocerystorespring2/controllers/TestRestController.java
 /Users/mac/Documents/GitHub/grocerystorespring2/src/main/java/org/pcedu/grocerystorespring2/entities/Orders.java
 /Users/mac/Documents/GitHub/grocerystorespring2/src/main/java/org/pcedu/grocerystorespring2/configuration/AppInitializer.java
 /Users/mac/Documents/GitHub/grocerystorespring2/src/main/java/org/pcedu/grocerystorespring2/controllers/Login.java

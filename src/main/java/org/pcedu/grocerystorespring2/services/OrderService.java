@@ -6,6 +6,7 @@
 package org.pcedu.grocerystorespring2.services;
 
 import java.util.List;
+import javax.persistence.EntityNotFoundException;
 import org.pcedu.grocerystorespring2.dao.OrdersDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +42,13 @@ public class OrderService {
     }
 
     public boolean delete(int id) {
-        return (dao.delete(id));
+        try {
+            dao.delete(id);
+
+        } catch (EntityNotFoundException e) {
+            return (false);
+        }
+        return (true);
 
     }
 

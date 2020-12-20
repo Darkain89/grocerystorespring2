@@ -6,6 +6,7 @@
 package org.pcedu.grocerystorespring2.controllers;
 
 import java.util.List;
+import javax.persistence.EntityNotFoundException;
 import org.pcedu.grocerystorespring2.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,12 +49,17 @@ public class Order {
     @GetMapping("/delete/{id}")
     public String deleteOrder(ModelMap view, @PathVariable int id) {
         System.out.println("delete id:" + id);
-        if (ordersService.delete(id)) {
-            view.addAttribute("msg", "Order with id:" + id + "deleted successfuly!");
-            return ("redirect:/login");
+        String message;
+        try {
+            ordersService.delete(id);
+        } catch (EntityNotFoundException e) {
+//            view.addAttribute("msg", "Order with id:" + id + "was not deleted!!!");
+            message = "Order with id:" + id + " was not deleted!!!";
+            return ("redirect:/login?msg=" + message);
         }
-        view.addAttribute("msg", "Order with id:" + id + "was not deleted!!!");
-        return ("redirect:/login");
+//        view.addAttribute("msg", "Order with id:" + id + "deleted successfuly!");
+        message = "Order with id:" + id + " deleted successfuly!";
+        return ("redirect:/login?msg=" + message);
     }
 
     // /order/customer/{id}

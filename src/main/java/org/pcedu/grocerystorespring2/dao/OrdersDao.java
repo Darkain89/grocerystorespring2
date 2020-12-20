@@ -6,6 +6,7 @@
 package org.pcedu.grocerystorespring2.dao;
 
 import java.util.List;
+import javax.persistence.EntityNotFoundException;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.pcedu.grocerystorespring2.entities.Customer;
@@ -58,8 +59,12 @@ public class OrdersDao extends AbstractDao<Integer, Orders> {
     public boolean delete(int id) {
         Orders tempOrder = findById(id);
         if (tempOrder != null) {
-            delete(tempOrder);
-            return (true);
+            try {
+                delete(tempOrder);
+                return (true);
+            } catch (EntityNotFoundException e) {
+                return (false);
+            }
         }
         return (false);
     }

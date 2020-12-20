@@ -22,6 +22,7 @@
             <button type="submit">Login</button>
         </form>
         <div id="msg">${msg}</div>
+        <div id="msg2"><%= request.getParameter("msg") %></div>
     </body>
 </html>
 

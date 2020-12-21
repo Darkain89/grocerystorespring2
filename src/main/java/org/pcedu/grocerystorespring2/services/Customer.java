@@ -7,6 +7,7 @@ package org.pcedu.grocerystorespring2.services;
 
 import java.util.List;
 import org.pcedu.grocerystorespring2.dao.CustomerDao;
+import org.pcedu.grocerystorespring2.entities.dto.CustomerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,16 @@ public class Customer {
     
     public org.pcedu.grocerystorespring2.entities.Customer findById(int id) {
         return dao.findById(id);
+    }
+
+    public CustomerDTO findByCustomer(org.pcedu.grocerystorespring2.entities.Customer customer) {
+        CustomerDTO custDTO = new CustomerDTO();
+        custDTO.setId(customer.getId());
+        custDTO.setFirstName(customer.getFirstName());
+        custDTO.setLastName(customer.getLastName());
+        custDTO.setEmail(customer.getEmail());
+        custDTO.setTel(customer.getTel());
+        return(custDTO);
     }
     
     public List<org.pcedu.grocerystorespring2.entities.Customer> findAll() {

@@ -41,16 +41,7 @@ public class CustomerRestController {
     public ResponseEntity<CustomerDTO> showCustomer(ModelMap view, @PathVariable String id) {
         view.addAttribute("projectName", "Grocery Store");
         org.pcedu.grocerystorespring2.entities.Customer customer = customerService.findById(Integer.parseInt(id));
-        CustomerDTO custDTO = new CustomerDTO();
-        custDTO.setId(customer.getId());
-        custDTO.setFirstName(customer.getFirstName());
-        custDTO.setLastName(customer.getLastName());
-        custDTO.setEmail(customer.getEmail());
-        custDTO.setTel(customer.getTel());
-//        view.addAttribute("customer", customer);
-//        return ("customer");
-        return (new ResponseEntity<>(custDTO, HttpStatus.OK));
-
+        return (new ResponseEntity<>(customerService.findByCustomer(customer), HttpStatus.OK));
     }
 
     @RequestMapping("/all")

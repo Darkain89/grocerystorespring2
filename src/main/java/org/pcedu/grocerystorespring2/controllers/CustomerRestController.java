@@ -7,7 +7,11 @@ package org.pcedu.grocerystorespring2.controllers;
 
 import java.util.List;
 import javax.validation.Valid;
+
+import org.pcedu.grocerystorespring2.entities.dto.CustomerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,12 +38,18 @@ public class CustomerRestController {
     }
 
     @RequestMapping(value = {"/{id}"})
-    public org.pcedu.grocerystorespring2.entities.Customer showCustomer(ModelMap view, @PathVariable String id) {
+    public ResponseEntity<CustomerDTO> showCustomer(ModelMap view, @PathVariable String id) {
         view.addAttribute("projectName", "Grocery Store");
         org.pcedu.grocerystorespring2.entities.Customer customer = customerService.findById(Integer.parseInt(id));
+        CustomerDTO custDTO = new CustomerDTO();
+        custDTO.setId(customer.getId());
+        custDTO.setFirstName(customer.getFirstName());
+        custDTO.setLastName(customer.getLastName());
+        custDTO.setEmail(customer.getEmail());
+        custDTO.setTel(customer.getTel());
 //        view.addAttribute("customer", customer);
 //        return ("customer");
-        return (customer);
+        return (new ResponseEntity<>(custDTO, HttpStatus.OK));
 
     }
 

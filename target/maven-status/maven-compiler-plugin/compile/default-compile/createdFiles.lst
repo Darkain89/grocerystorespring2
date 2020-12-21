@@ -15,6 +15,7 @@ org\pcedu\grocerystorespring2\configuration\AppConfig.class
 org\pcedu\grocerystorespring2\configuration\AppInitializer.class
 org\pcedu\grocerystorespring2\dao\CustomerDao.class
 org\pcedu\grocerystorespring2\services\Customer.class
+org\pcedu\grocerystorespring2\entities\dto\CustomerDTO.class
 org\pcedu\grocerystorespring2\configuration\HibernateConfiguration.class
 org\pcedu\grocerystorespring2\entities\Product.class
 org\pcedu\grocerystorespring2\dao\OrdersDao.class

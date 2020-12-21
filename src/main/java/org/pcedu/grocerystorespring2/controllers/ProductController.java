@@ -6,6 +6,8 @@
 package org.pcedu.grocerystorespring2.controllers;
 
 
+import org.pcedu.grocerystorespring2.entities.Product;
+import org.pcedu.grocerystorespring2.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -21,15 +23,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 @Controller
 @RequestMapping({"/product"})
-public class Product {
+public class ProductController {
 
     @Autowired
-    org.pcedu.grocerystorespring2.services.Product productService;
+    ProductService productService;
 
     @RequestMapping("/{id}")
     public String page(ModelMap view, @PathVariable String id) {
         view.addAttribute("projectName", "Grocery Store");
-        org.pcedu.grocerystorespring2.entities.Product product = productService.findById(Integer.parseInt(id));
+        Product product = productService.findById(Integer.parseInt(id));
         view.addAttribute("product", product);
         return "product";
     }

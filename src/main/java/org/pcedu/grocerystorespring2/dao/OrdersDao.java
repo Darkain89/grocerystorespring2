@@ -11,6 +11,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.pcedu.grocerystorespring2.entities.Customer;
 import org.pcedu.grocerystorespring2.entities.Orders;
+import org.pcedu.grocerystorespring2.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +23,7 @@ import org.springframework.stereotype.Repository;
 public class OrdersDao extends AbstractDao<Integer, Orders> {
 
     @Autowired
-    org.pcedu.grocerystorespring2.services.Customer customerService;
+    CustomerService customerService;
 
     public Orders findById(int id) {
         Orders s = getByKey(id);

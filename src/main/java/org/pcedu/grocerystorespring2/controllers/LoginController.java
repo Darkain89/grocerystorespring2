@@ -17,9 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/")
-public class Login {
+public class LoginController {
 
-    @RequestMapping(value = {"/", "/login"}, method = {RequestMethod.GET})
+    @RequestMapping(value = {"/"}, method = {RequestMethod.GET})
+    public String login(ModelMap view) {
+        view.addAttribute("projectName", "Grocery Store");
+        return ("login");
+    }
+    
+    @RequestMapping(value = {"/login"}, method = {RequestMethod.GET})
     public String login(ModelMap view, @RequestParam("msg") String message) {
         view.addAttribute("projectName", "Grocery Store");
         view.addAttribute("msg", message);

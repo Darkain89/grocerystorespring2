@@ -7,6 +7,7 @@ package org.pcedu.grocerystorespring2.controllers;
 
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
+import org.pcedu.grocerystorespring2.entities.Orders;
 import org.pcedu.grocerystorespring2.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping(value = {"/order"})
-public class Order {
+public class OrderController {
 
     @Autowired
     OrderService ordersService;
@@ -29,7 +30,7 @@ public class Order {
     @RequestMapping(value = {"/{id}"})
     public String showOrder(ModelMap view, @PathVariable Integer id) {
         view.addAttribute("projectName", "Grocery Store");
-        org.pcedu.grocerystorespring2.entities.Orders order = ordersService.findById(id);
+        Orders order = ordersService.findById(id);
         view.addAttribute("order", order);
         return ("order");
     }
@@ -37,7 +38,7 @@ public class Order {
     @RequestMapping("/all")
     public String showOrders(ModelMap view) {
         view.addAttribute("projectName", "Grocery Store");
-        List<org.pcedu.grocerystorespring2.entities.Orders> orders;
+        List<Orders> orders;
         orders = ordersService.findAll();
         view.addAttribute("order", orders);
         return ("order");
@@ -53,11 +54,11 @@ public class Order {
         try {
             ordersService.delete(id);
         } catch (EntityNotFoundException e) {
-//            view.addAttribute("msg", "Order with id:" + id + "was not deleted!!!");
+//            view.addAttribute("msg", "OrderController with id:" + id + "was not deleted!!!");
             message = "Order with id:" + id + " was not deleted!!!";
             return ("redirect:/login?msg=" + message);
         }
-//        view.addAttribute("msg", "Order with id:" + id + "deleted successfuly!");
+//        view.addAttribute("msg", "OrderController with id:" + id + "deleted successfuly!");
         message = "Order with id:" + id + " deleted successfuly!";
         return ("redirect:/login?msg=" + message);
     }
@@ -65,7 +66,7 @@ public class Order {
     // /order/customer/{id}
     @GetMapping("/customer/{id}")
     public String ordersByCustomerId(ModelMap view, @PathVariable String id) {
-        List<org.pcedu.grocerystorespring2.entities.Orders> orders
+        List<Orders> orders
                 = ordersService.findByCustomerId(id);
         view.addAttribute("projectName", "Grocery Store");
         view.addAttribute("order", orders);

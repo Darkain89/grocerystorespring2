@@ -8,6 +8,7 @@ package org.pcedu.grocerystorespring2.services;
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
 import org.pcedu.grocerystorespring2.dao.OrdersDao;
+import org.pcedu.grocerystorespring2.entities.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,21 +24,21 @@ public class OrderService {
     @Autowired
     OrdersDao dao;
 
-    public org.pcedu.grocerystorespring2.entities.Orders findById(int id) {
+    public Orders findById(int id) {
         return dao.findById(id);
     }
 
-    public List<org.pcedu.grocerystorespring2.entities.Orders> findAll() {
+    public List<Orders> findAll() {
         return (dao.findAll());
     }
 
-    public boolean save(org.pcedu.grocerystorespring2.entities.Orders order) {
+    public boolean save(Orders order) {
         boolean result = false;
         result = dao.save(order);
         return (result);
     }
 
-    public boolean update(org.pcedu.grocerystorespring2.entities.Orders order) {
+    public boolean update(Orders order) {
         return (dao.update(order));
     }
 
@@ -52,7 +53,7 @@ public class OrderService {
 
     }
 
-    public List<org.pcedu.grocerystorespring2.entities.Orders> findByCustomerId(String customersId) {
+    public List<Orders> findByCustomerId(String customersId) {
         return (dao.findByCustomerId(customersId));
     }
 

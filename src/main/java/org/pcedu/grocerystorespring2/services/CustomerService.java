@@ -8,6 +8,7 @@ package org.pcedu.grocerystorespring2.services;
 import java.util.ArrayList;
 import java.util.List;
 import org.pcedu.grocerystorespring2.dao.CustomerDao;
+import org.pcedu.grocerystorespring2.entities.Customer;
 import org.pcedu.grocerystorespring2.entities.Orders;
 import org.pcedu.grocerystorespring2.entities.dto.CustomerDTO;
 import org.pcedu.grocerystorespring2.entities.dto.CustomerOrdersDTO;
@@ -22,16 +23,16 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service("customerService")
 @Transactional
-public class Customer {
+public class CustomerService {
     @Autowired
     CustomerDao dao;
     
-    public org.pcedu.grocerystorespring2.entities.Customer findById(int id) {
+    public Customer findById(int id) {
         return dao.findById(id);
     }
     
     public CustomerDTO findByIdDTO(int id) {
-        org.pcedu.grocerystorespring2.entities.Customer customer = findById(id);
+        Customer customer = findById(id);
         CustomerDTO customerDTO = new CustomerDTO();
         customerDTO.setId(customer.getId());
         customerDTO.setFirstName(customer.getFirstName());
@@ -43,11 +44,11 @@ public class Customer {
     
     // Step  1. Do some inheritance magic, create CustomerOrdersDTO extends CustomerDTO
     // Step 2a. Create from customerService findOrdersByCustomerIdDTO
-    // Step 2b. Fill customer's data like findByIdDTO (Customer Service)
+    // Step 2b. Fill customer's data like findByIdDTO (CustomerService Service)
     // Step  3. Create OrdersDTO
     // Step  4. Fill List of CustomerOrdersDTO (OrdersDTO) with orders' data
     public CustomerOrdersDTO findOrdersByCustomerIdDTO(int id) {
-        org.pcedu.grocerystorespring2.entities.Customer customer = findById(id);
+        Customer customer = findById(id);
         CustomerOrdersDTO customerOrdersDTO = new CustomerOrdersDTO();
         
         // customer's details
@@ -71,7 +72,7 @@ public class Customer {
     
     // change return type!!!!
     public CustomerOrdersDTO findOrdersAndDetailsByCustomerIdDTO(int id) {
-        org.pcedu.grocerystorespring2.entities.Customer customer = findById(id);
+       Customer customer = findById(id);
         CustomerOrdersDTO customerOrdersDTO = new CustomerOrdersDTO();
         
         // customer's details
@@ -95,17 +96,17 @@ public class Customer {
         return(customerOrdersDTO);
     }
     
-    public List<org.pcedu.grocerystorespring2.entities.Customer> findAll() {
+    public List<Customer> findAll() {
         return(dao.findAll());
     }
     
-    public boolean save(org.pcedu.grocerystorespring2.entities.Customer customer) {
+    public boolean save(Customer customer) {
         boolean result = false;
         result = dao.save(customer);
         return(result);
     }
     
-    public boolean update(org.pcedu.grocerystorespring2.entities.Customer customer) {
+    public boolean update(Customer customer) {
         return(dao.update(customer));
     }
     
@@ -114,7 +115,7 @@ public class Customer {
         
     }
     
-    public List<org.pcedu.grocerystorespring2.entities.Customer> findByFirstLastNames(String firstName, String lastName) {
+    public List<Customer> findByFirstLastNames(String firstName, String lastName) {
         return(dao.findByFirstLastNames(firstName, lastName));
     }
 }

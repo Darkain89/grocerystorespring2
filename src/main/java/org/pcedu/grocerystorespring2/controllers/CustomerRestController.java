@@ -7,8 +7,10 @@ package org.pcedu.grocerystorespring2.controllers;
 
 import java.util.List;
 import javax.validation.Valid;
+import org.pcedu.grocerystorespring2.entities.Customer;
 import org.pcedu.grocerystorespring2.entities.dto.CustomerDTO;
 import org.pcedu.grocerystorespring2.entities.dto.CustomerOrdersDTO;
+import org.pcedu.grocerystorespring2.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -28,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerRestController {
 
     @Autowired
-    org.pcedu.grocerystorespring2.services.Customer customerService;
+    CustomerService customerService;
 
     @GetMapping("/hello")
     public String hello() {
@@ -56,7 +58,7 @@ public class CustomerRestController {
     @RequestMapping("/all")
     public String showCustomers(ModelMap view) {
         view.addAttribute("projectName", "Grocery Store");
-        List<org.pcedu.grocerystorespring2.entities.Customer> customers;
+        List<Customer> customers;
         customers = customerService.findAll();
         view.addAttribute("customer", customers);
         return ("customer");
@@ -65,14 +67,14 @@ public class CustomerRestController {
     @RequestMapping("/new")
     public String newCustomer(ModelMap view) {
         view.addAttribute("projectName", "Grocery Store");
-        org.pcedu.grocerystorespring2.entities.Customer customer = new org.pcedu.grocerystorespring2.entities.Customer();
+        Customer customer = new Customer();
         view.addAttribute("customer", customer);
         return ("newcustomer");
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String saveNewCustomer(ModelMap view,
-            @Valid org.pcedu.grocerystorespring2.entities.Customer customer,
+            @Valid Customer customer,
             BindingResult bindingResult) {
         view.addAttribute("projectName", "Grocery Store");
         if (bindingResult.hasErrors()) {
@@ -86,14 +88,13 @@ public class CustomerRestController {
 
     @GetMapping("/update/{id}")
     public String updateCustomer(ModelMap view, @PathVariable int id) {
-        org.pcedu.grocerystorespring2.entities.Customer customer = customerService.findById(id);
+        Customer customer = customerService.findById(id);
         view.addAttribute("customer", customer);
         return ("updatecustomer");
     }
 
     @PostMapping("/update/saveupdate")
-    public String saveUpdateCustomer(ModelMap view,
-            org.pcedu.grocerystorespring2.entities.Customer customer) {
+    public String saveUpdateCustomer(ModelMap view, Customer customer) {
         view.addAttribute("projectName", "Grocery Store");
         customerService.update(customer);
         return ("redirect:/login");
@@ -111,7 +112,7 @@ public class CustomerRestController {
 
     @GetMapping("/findbynames/{firstName}/{lastName}")
     public String findByFirstLastNames(ModelMap view, @PathVariable String firstName, @PathVariable String lastName) {
-        List<org.pcedu.grocerystorespring2.entities.Customer> customers
+        List<Customer> customers
                 = customerService.findByFirstLastNames(firstName, lastName);
         // https://www.tutorialspoint.com/hibernate/hibernate_criteria_queries.htm
         view.addAttribute("customer", customers);

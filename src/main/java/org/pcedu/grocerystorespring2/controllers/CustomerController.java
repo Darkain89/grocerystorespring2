@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping(value = {"/customer"})
-public class Customer {
+public class CustomerController {
 
     @Autowired
-    org.pcedu.grocerystorespring2.services.Customer customerService;
+    org.pcedu.grocerystorespring2.services.CustomerService customerService;
 
     @RequestMapping(value = {"/{id}"})
     public String showCustomer(ModelMap view, @PathVariable String id) {

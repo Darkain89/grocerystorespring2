@@ -21,7 +21,16 @@
             <input name="${password}" type="password" />
             <button type="submit">Login</button>
         </form>
-        <div id="msg">${msg}</div>
+            <!--<div id="msg"><%--<c:if test="${msg} != null">${msg}</c:if>--%></div>-->
+            <div id="msg">
+                <% 
+                    String msg;
+                    if(session.getAttribute("msq") != null) {
+                        msg = (String)session.getAttribute("msq");
+                        out.print(msg);
+                    } 
+                %>
+            </div>
         <div id="msg2"><%= request.getParameter("msg") %></div>
     </body>
 </html>

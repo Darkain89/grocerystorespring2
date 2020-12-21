@@ -5,6 +5,7 @@
  */
 package org.pcedu.grocerystorespring2.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -25,7 +26,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -64,6 +64,7 @@ public class Orders implements Serializable {
     private Customer customersId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders2Id") //, fetch = FetchType.EAGER)
     @LazyCollection(LazyCollectionOption.FALSE)
+//    @JsonIgnore
     private List<OrdersDetails> ordersDetailsList;
 
     public Orders() {

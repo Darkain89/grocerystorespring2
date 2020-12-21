@@ -1,8 +1,10 @@
+org\pcedu\grocerystorespring2\entities\dto\CustomerOrdersDTO.class
 org\pcedu\grocerystorespring2\controllers\Product.class
 org\pcedu\grocerystorespring2\controllers\CustomerRestController.class
 org\pcedu\grocerystorespring2\services\Product.class
 org\pcedu\grocerystorespring2\controllers\TestRestController.class
 org\pcedu\grocerystorespring2\controllers\Login.class
+org\pcedu\grocerystorespring2\entities\dto\OrdersDTO.class
 org\pcedu\grocerystorespring2\controllers\Customer.class
 org\pcedu\grocerystorespring2\entities\Customer.class
 org\pcedu\grocerystorespring2\entities\Orders.class

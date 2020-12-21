@@ -8,6 +8,7 @@ package org.pcedu.grocerystorespring2.controllers;
 import java.util.List;
 import javax.validation.Valid;
 import org.pcedu.grocerystorespring2.entities.dto.CustomerDTO;
+import org.pcedu.grocerystorespring2.entities.dto.CustomerOrdersDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -41,8 +42,16 @@ public class CustomerRestController {
         return (customerDTO);
     }
     
-    // @GetMapping("/{id}/orders")
-    // public XXX showCustomerOrders(ModelMap view, @PathVariable String id)
+    
+    @GetMapping("/{id}/orders")
+    public CustomerOrdersDTO showCustomerOrders(ModelMap view, @PathVariable String id) {
+        view.addAttribute("projectName", "Grocery Store");
+        CustomerOrdersDTO customerOrderDTO = customerService.findOrdersByCustomerIdDTO(Integer.parseInt(id));
+        return(customerOrderDTO);
+    }
+    
+    // @GetMapping("/api/customer/{id}/orders/details")
+    
 
     @RequestMapping("/all")
     public String showCustomers(ModelMap view) {

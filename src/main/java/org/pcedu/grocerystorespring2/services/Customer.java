@@ -5,9 +5,13 @@
  */
 package org.pcedu.grocerystorespring2.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.pcedu.grocerystorespring2.dao.CustomerDao;
+import org.pcedu.grocerystorespring2.entities.Orders;
 import org.pcedu.grocerystorespring2.entities.dto.CustomerDTO;
+import org.pcedu.grocerystorespring2.entities.dto.CustomerOrdersDTO;
+import org.pcedu.grocerystorespring2.entities.dto.OrdersDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +39,60 @@ public class Customer {
         customerDTO.setTel(customer.getTel());
         customerDTO.setEmail(customer.getEmail());
         return(customerDTO);
+    }
+    
+    // Step  1. Do some inheritance magic, create CustomerOrdersDTO extends CustomerDTO
+    // Step 2a. Create from customerService findOrdersByCustomerIdDTO
+    // Step 2b. Fill customer's data like findByIdDTO (Customer Service)
+    // Step  3. Create OrdersDTO
+    // Step  4. Fill List of CustomerOrdersDTO (OrdersDTO) with orders' data
+    public CustomerOrdersDTO findOrdersByCustomerIdDTO(int id) {
+        org.pcedu.grocerystorespring2.entities.Customer customer = findById(id);
+        CustomerOrdersDTO customerOrdersDTO = new CustomerOrdersDTO();
+        
+        // customer's details
+        customerOrdersDTO.setId(customer.getId());
+        customerOrdersDTO.setFirstName(customer.getFirstName());
+        customerOrdersDTO.setLastName(customer.getLastName());
+        customerOrdersDTO.setTel(customer.getTel());
+        customerOrdersDTO.setEmail(customer.getEmail());
+        
+        // orders' data
+        List<Orders> orders = customer.getOrdersList();
+       
+        List<OrdersDTO> ordersDTO = new ArrayList<OrdersDTO>();
+        for (Orders order : orders) {
+            ordersDTO.add(new OrdersDTO(order.getId(), order.getDate(), order.getTotalPrice()));
+        }
+        customerOrdersDTO.setOrders(ordersDTO);
+        return(customerOrdersDTO);
+    }
+    
+    
+    // change return type!!!!
+    public CustomerOrdersDTO findOrdersAndDetailsByCustomerIdDTO(int id) {
+        org.pcedu.grocerystorespring2.entities.Customer customer = findById(id);
+        CustomerOrdersDTO customerOrdersDTO = new CustomerOrdersDTO();
+        
+        // customer's details
+        customerOrdersDTO.setId(customer.getId());
+        customerOrdersDTO.setFirstName(customer.getFirstName());
+        customerOrdersDTO.setLastName(customer.getLastName());
+        customerOrdersDTO.setTel(customer.getTel());
+        customerOrdersDTO.setEmail(customer.getEmail());
+        
+        // orders' data
+        List<Orders> orders = customer.getOrdersList();
+       
+        List<OrdersDTO> ordersDTO = new ArrayList<OrdersDTO>();
+        for (Orders order : orders) {
+            ordersDTO.add(new OrdersDTO(order.getId(), order.getDate(), order.getTotalPrice()));
+        }
+        customerOrdersDTO.setOrders(ordersDTO);
+        
+        // orderDetails
+        
+        return(customerOrdersDTO);
     }
     
     public List<org.pcedu.grocerystorespring2.entities.Customer> findAll() {

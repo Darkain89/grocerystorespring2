@@ -9,6 +9,7 @@ import java.util.List;
 import javax.validation.Valid;
 import org.pcedu.grocerystorespring2.entities.Customer;
 import org.pcedu.grocerystorespring2.entities.dto.CustomerDTO;
+import org.pcedu.grocerystorespring2.entities.dto.CustomerOrderDetailsDTO;
 import org.pcedu.grocerystorespring2.entities.dto.CustomerOrdersDTO;
 import org.pcedu.grocerystorespring2.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,11 @@ public class CustomerRestController {
     }
     
     // @GetMapping("/api/customer/{id}/orders/details")
+    public CustomerOrderDetailsDTO showCustomersOrdersDetails(@PathVariable String id) {
+        CustomerOrderDetailsDTO customerOrderDetailsDTO = 
+                customerService.findOrdersAndDetailsByCustomerIdDTO(Integer.parseInt(id));
+        return(customerOrderDetailsDTO);
+    }
     
 
     @RequestMapping("/all")

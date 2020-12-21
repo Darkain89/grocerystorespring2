@@ -11,6 +11,7 @@ import org.pcedu.grocerystorespring2.dao.CustomerDao;
 import org.pcedu.grocerystorespring2.entities.Customer;
 import org.pcedu.grocerystorespring2.entities.Orders;
 import org.pcedu.grocerystorespring2.entities.dto.CustomerDTO;
+import org.pcedu.grocerystorespring2.entities.dto.CustomerOrderDetailsDTO;
 import org.pcedu.grocerystorespring2.entities.dto.CustomerOrdersDTO;
 import org.pcedu.grocerystorespring2.entities.dto.OrdersDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,9 +72,10 @@ public class CustomerService {
     
     
     // change return type!!!!
-    public CustomerOrdersDTO findOrdersAndDetailsByCustomerIdDTO(int id) {
-       Customer customer = findById(id);
+    public CustomerOrderDetailsDTO findOrdersAndDetailsByCustomerIdDTO(int id) {
+        Customer customer = findById(id);
         CustomerOrdersDTO customerOrdersDTO = new CustomerOrdersDTO();
+        CustomerOrderDetailsDTO customerOrderDetailsDTO = new CustomerOrderDetailsDTO();
         
         // customer's details
         customerOrdersDTO.setId(customer.getId());
@@ -91,9 +93,11 @@ public class CustomerService {
         }
         customerOrdersDTO.setOrders(ordersDTO);
         
+        // customerOrderDetailsDTO needs to be filled!!!!
         // orderDetails
+        // Prdoduct
         
-        return(customerOrdersDTO);
+        return(customerOrderDetailsDTO);
     }
     
     public List<Customer> findAll() {

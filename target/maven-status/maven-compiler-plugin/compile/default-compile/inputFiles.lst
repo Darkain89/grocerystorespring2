@@ -2,6 +2,7 @@ C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\dao\OrdersDao.java
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\entities\OrdersDetails.java
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\entities\dto\CustomerDTO.java
+C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\entities\dto\CustomerOrderDetailsDTO.java
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\configuration\AppInitializer.java
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\configuration\HibernateConfiguration.java
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\controllers\LoginController.java
@@ -9,7 +10,9 @@ C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\entities\dto\CustomerOrdersDTO.java
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\controllers\OrderController.java
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\Grocerystorespring2Application.java
+C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\entities\dto\OrdersDetailsProductDTO.java
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\entities\Orders.java
+C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\entities\dto\OrdersDetailsDTO.java
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\dao\AbstractDao.java
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\controllers\CustomerRestController.java
 C:\Users\George.Pasparakis\Downloads\grocerystorespring2\src\main\java\org\pcedu\grocerystorespring2\entities\Product.java

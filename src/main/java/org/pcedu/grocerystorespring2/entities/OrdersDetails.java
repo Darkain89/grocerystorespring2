@@ -29,7 +29,7 @@ import org.hibernate.annotations.LazyCollectionOption;
  */
 @Entity
 @Table(name = "orders2_details", catalog = "eshop1", schema = "")
-@XmlRootElement
+//@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OrdersDetails.findAll", query = "SELECT o FROM OrdersDetails o"),
     @NamedQuery(name = "OrdersDetails.findById", query = "SELECT o FROM OrdersDetails o WHERE o.id = :id"),
